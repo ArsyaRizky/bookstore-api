@@ -18,7 +18,7 @@ import { Book } from './books/entities/book.entity.js';
       useFactory: (config: ConfigService) => ({
         type: 'mssql',
         host: config.get<string>('DB_HOST', 'localhost'),
-        port: config.get<number>('DB_PORT', 1433),
+        port: parseInt(config.get<string>('DB_PORT', '1433'), 10),
         username: config.get<string>('DB_USERNAME', 'sa'),
         password: config.get<string>('DB_PASSWORD', 'admindb'),
         database: config.get<string>('DB_DATABASE', 'bookstore'),
